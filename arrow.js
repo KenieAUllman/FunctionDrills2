@@ -11,7 +11,7 @@ const exclaim = function(str) {
 
 // arrow
 // declaration
-//expression
+expression
 
 
 
@@ -26,7 +26,7 @@ const exclaimTwo = (str) => {
   return str.toUpperCase() + '!!!'
 }
  console.log(exclaimTwo('Expecto Petronum')) 
- //arrow
+ arrow
 // declaration
 // expression
 
@@ -51,7 +51,7 @@ function exclaimFour(str) {
 }
 
 // arrow
-// declaration
+declaration
 // expression
 
 
