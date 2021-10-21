@@ -7,15 +7,29 @@
 
 // CODE HERE
 
-
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
+const multiplication = (x, y) => {
+  return x * y
+}
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+const addition = (x, y) => {
+  return x + y
+}
 
+const subtraction = (x, y) => {
+  return x - y
+}
+
+const maths = (x, y, callback) => {
+  let answer = callback(x, y)
+  console.log('The answer is ' + answer) //should console.log 12
+}
+
+maths(5, 8, multiplication)
+maths(5, 8, addition)
+maths(7, 4, subtraction)
 
 
 ////////// PROBLEMS 2 - 6 //////////
@@ -38,15 +52,20 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // CODE HERE 
 
 
+
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+const first = (names, firstName) => {
+  console.log('The first name in names is ' + firstName(names[0]))
+}
 
+const allCaps = (yelling) => {
+  return yelling.toUpperCase() 
+}
 
+first(names, allCaps)
 
 ////////// PROBLEM 3 //////////
 
@@ -62,10 +81,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+last = (names, lastName) => {
+   console.log('The last name in names is ' + lastName(names[names.length - 1]))
+}
 
+last(names, allCaps)
 
 
 ////////// PROBLEM 4 //////////
@@ -84,25 +104,43 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+contains = (names, name, result) => {
+   if(result(names, name)){
+     console.log(name + ' is in the array')
+   } else {
+     console.log(name + ' is not in the array')
+   }
+}
 
+const isInArray = (names, subject) => {
+  return names.includes(subject)
+}
 
+contains(names, 'Cayla', isInArray)
 
 ////////// PROBLEM 5 //////////
 
 /*
   Write a function called uniq that takes in an array and a callback function.
-  Remove any duplicate values from the array, and invoke the callback with the modified array as an argument.
+  Remove any duplicate values from the array, and invoke the callback with the 
+  modified array as an argument.
   Hint: you can use a nested for loop to do this.
 */
 
 // CODE HERE
+const uniq = (names, different) => {
+  return different(names)
+}
+
+const different = (names) => {
+  let newArray = []
+  for (let idx = 0; idx < names.length; idx++) {
+    const ilement = names[idx];
+    if(!newArray.includes(ilement))
+      newArray.push(ilement)
+  }
+  return newArray
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -112,17 +150,27 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+let newNames = uniq(names, different)
+const uniqPRINT = (uniqArr) => {
+  console.log('The new names array with all the duplicate items removed is ' + uniqArr)
+}
 
-
+uniqPRINT(newNames) 
 
 ////////// PROBLEM 6 //////////
 
 /* 
   Write a function called each that takes in an array of names and a callback function. 
-  For each name in the array, invoke the callback and pass in the name and the name's index as arguments.
+  For each name in the array, invoke the callback and pass in the name and the name's index as 
+  arguments.
 */
 
 // CODE HERE 
+const each = (names, callback) => {
+  for (let index = 0; index < names.length; index++) {
+    callback(names[index], index) 
+  }
+}
 
 
 /*
@@ -133,7 +181,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const anotherPrint = (item, index) => {
+  console.log('The item at index ' + index + ' is ' + item + '.')
+}
+each(names, anotherPrint)
 
 ////////// PROBLEM 7 //////////
 
