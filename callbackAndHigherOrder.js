@@ -189,7 +189,8 @@ each(names, anotherPrint)
 ////////// PROBLEM 7 //////////
 
 /*
-  Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
+  Write a function called getUserById that takes in three parameters: an array of objects (users), 
+  an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
 
@@ -223,9 +224,20 @@ var users = [
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+getUserById = (users, id, callback) => {
+  for (let index = 0; index < users.length; index++) {
+    if (users[index].id === id) {
+      callback(users[index])
+    }
+  }
+}
+
+const displayUser = (user) => {
+  console.log(user.name + " has volunteered as tribute")
+}
+
+getUserById(users, '16t', displayUser)
+getUserById(users, '12c', displayUser)
 
 ////////// CHALLENGE //////////
 
